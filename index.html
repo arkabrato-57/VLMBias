@@ -26,7 +26,8 @@
     --bg:#ffffff;
     --soft:#f4f7fb;
     --border:#e3e8ef;
-    --maxw:820px;              /* readable content width */
+    --maxw:1000px;             /* readable content width */
+    --accent:#ff9933;          /* saffron accent */
   }
   *{box-sizing:border-box;}
   .container{margin:0 auto;}
@@ -56,8 +57,11 @@
 
   /* every section shares one centered, padded column */
   section.block-sec{max-width:var(--maxw);margin:0 auto;padding:2.4rem 1.5rem;}
-  .section-title{text-align:center;font-size:1.7rem;font-weight:700;margin-bottom:1.3rem;}
-  .lead{font-size:1.05rem;color:var(--ink);text-align:left;}   /* left-aligned: no justify rivers */
+  .section-title{text-align:center;font-size:1.7rem;font-weight:700;margin-bottom:1.3rem;padding-bottom:.7rem;position:relative;}
+  .section-title::after{content:"";display:block;width:70px;height:4px;margin:.7rem auto 0;border-radius:2px;
+            background:linear-gradient(90deg,var(--brand),var(--accent));}
+  .lead{font-size:1.08rem;color:#4b5563;text-align:justify;hyphens:auto;line-height:1.78;}
+  .lead strong{color:var(--ink);}
 
   .fig{margin:1.4rem auto;max-width:760px;}
   .fig img{width:100%;border-radius:10px;border:1px solid var(--border);display:block;}
@@ -128,21 +132,21 @@
     <p class="lead">
       Vision-Language Models (VLMs) have achieved remarkable success across multimodal tasks, but they often
       exhibit societal biases in scenarios involving human subjects. In this work, we systematically study
-      demographic biases in generative VLMs focused on human face selection. Specifically, the VLM is presented
+      demographic biases in <strong>generative VLMs</strong> focused on human face selection. Specifically, the VLM is presented
       with a composite image containing faces from four distinct demographic groups and is prompted to select
       the individual based on subjective traits like practicing a certain religion or holding a specific
       occupation, etc. For this purpose, we curate a dataset comprising 4 face images (arranged in a
       2&nbsp;&times;&nbsp;2 grid) from the FairFace and BFW datasets, where each person represents an
       intersection of two genders (Female/Male) and two races (Black/White). Unlike existing works that rely on
-      close-ended yes/no outputs or multiple-choice questions, our formulation asks the VLM to generate bounding
-      box coordinates, thereby revealing its demographic preferences more directly. We propose a two-stage
-      debiasing approach where the first stage learns lightweight LoRA task vectors on frozen VLM backbones using
+      close-ended yes/no outputs or multiple-choice questions, our formulation asks the VLM to generate <strong>bounding
+      box coordinates</strong>, thereby revealing its demographic preferences more directly. We propose a
+      <strong>two-stage debiasing approach</strong> where the first stage learns lightweight LoRA task vectors on frozen VLM backbones using
       an auxiliary task of gender and race prediction from face images. The second stage negates these task
       vectors and employs them to mitigate the societal biases otherwise inherent in the VLM. Experimental
       results demonstrate that our approach substantially debiases pre-trained VLMs, outperforming multiple
       baseline variations and existing prompt-based debiasing techniques. Additionally, we show that our bias
-      mitigation strategy successfully transfers to high-stakes downstream tasks, such as loan, bail, and rent
-      approval decisions.
+      mitigation strategy successfully transfers to <strong>high-stakes downstream tasks, such as loan, bail, and rent
+      approval decisions</strong>.
     </p>
   </div>
 </section>
