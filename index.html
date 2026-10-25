@@ -170,12 +170,12 @@ to high-stake downstream tasks, such as loan, bail and rent approval decisions
   </div>
 
   <figure class="fig">
-    <img src="method.png" alt="Task-vector negation overview"> -->
-     Brief overview of the proposed workflow. (A) Training pipeline on the auxiliary attribute-prediction task, where
+    <img src="method.png" alt="Task-vector negation overview">
+     
+    <figcaption>Overview: learn gender/race task vectors with LoRA, then negate them from the model's weights. (A) Training pipeline on the auxiliary attribute-prediction task, where
 LoRA adapters are added to the vision encoder, projection, and language model of a generative VLM to learn the task vector.
 (B) Inference on the debiased model — obtained by negating the learned task vector — using a 2×2 composite image, where the
-model is prompted to return bounding-box coordinates for the selected face(s)
-    <figcaption>Overview: learn gender/race task vectors with LoRA, then negate them from the model's weights.</figcaption>
+model is prompted to return bounding-box coordinates for the selected face(s)</figcaption>
   </figure>
 </section>
 
