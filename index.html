@@ -120,22 +120,21 @@
   <div class="block-sec">
     <h2 class="section-title">Abstract</h2>
     <p class="lead">
-      Generative Vision-Language Models (VLMs) such as LLaVA-1.5 and Qwen2.5-VL are increasingly
-      deployed in applications that reason about people, where any demographic bias they carry can
-      translate into unfair outcomes at scale. While bias in contrastive VLMs such as CLIP has been
-      studied extensively, bias in <em>generative</em> VLMs &mdash; which produce open-ended outputs
-      &mdash; remains comparatively underexplored. We study demographic bias in a competitive setting,
-      where four faces spanning gender and race compete within a single image and the model produces
-      open-ended bounding-box selections with no neutral opt-out. We quantify the resulting demographic
-      skew with a label-free fairness measure, Disparate Impact, and mitigate it through
-      <em>task-vector negation</em>: we learn lightweight LoRA adapters that predict gender and race
-      from a single face &mdash; capturing the appearance-to-attribute mapping as a task vector &mdash;
-      and negate this vector from the model's weights to induce targeted forgetting of that mapping,
-      using only standard attribute labels disjoint from evaluation. Our method reduces bias toward
-      parity and outperforms prompt-based baselines, more consistently across datasets. We further find
-      that the debiasing effect is architecture-dependent &mdash; LLaVA-1.5 rebalances its selections
-      while Qwen2.5-VL abstains &mdash; and that the effect transfers to unseen decision tasks such as
-      loan, bail, and rent approval while preserving general capability.
+      
+Vision-Language Models (VLMs) have achieved remarkable success across multimodal tasks, but they often exhibit societal
+biases in scenarios involving human subjects. In this work, we systematically study demographic biases in generative 
+VLMs focused on human face selection. Specifically, the VLM is presented with a composite image containing faces from
+four distinct demographic groups and is prompted to select the individual based on subjective traits like practicing a
+certain religion or holding a specific occupation etc. For this purpose, we curate a dataset comprising 4 face images
+(arranged in a 2 × 2 grid) from the FairFace and BFW datasets where each person represents an intersection of two genders
+(Female/Male) and two races (Black/White). Unlike existing works that rely on close-ended yes/no outputs or multiple-choice
+questions, our formulation asks the VLM to generate bounding box coordinates, thereby revealing its demographic preferences
+more directly. We propose a two-stage debiasing approach where the first stage learns lightweight LoRA task vectors on
+frozen VLM backbones using an auxiliary task of gender and race prediction from face images. The second stage negates
+these task vectors and employs them to mitigate the societal biases otherwise inherent in the VLM. Experimental results
+demonstrate that our approach substantially debiases pre-trained VLMs, outperforming multiple baseline variations and
+existing prompt-based debiasing techniques. Additionally, we show that our bias mitigation strategy successfully transfers
+to high-stake downstream tasks, such as loan, bail and rent approval decisions
     </p>
   </div>
 </section>
