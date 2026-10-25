@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2563eb">
+<title>Anyone Can Be a Doctor | ICVGIP 2026</title>
+<meta name="description" content="Anyone Can Be a Doctor: Debiasing VLMs via Task-Vector Negation. ICVGIP 2026.">
+
+<!-- Font Awesome for link icons (works on your site; harmless if blocked in a sandboxed preview) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --brand:#2563eb;
+    --brand-dark:#1d4ed8;
+    --ink:#1f2933;
+    --muted:#52606d;
+    --bg:#ffffff;
+    --soft:#f4f7fb;
+    --border:#e3e8ef;
+  }
+  *{box-sizing:border-box;}
+  .container{margin:0 auto;}
+  .has-text-centered{text-align:center;}
+  html,body{background:var(--bg);color:var(--ink);margin:0;padding:0;}
+  body{font-family:"Noto Sans","Google Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65;}
+  .title,.subtitle,h1,h2,h3{font-family:"Google Sans","Noto Sans",sans-serif;color:var(--ink);}
+  a{color:var(--brand);}
+  a:hover{color:var(--brand-dark);}
+
+  .hero-head-pad{padding:3.2rem 1rem 1.6rem;}
+  .paper-title{font-size:2.3rem;line-height:1.2;font-weight:700;letter-spacing:-.01em;}
+  @media(max-width:640px){.paper-title{font-size:1.65rem;}}
+  .conf-badge{display:inline-block;margin:1.1rem 0 .4rem;font-weight:700;color:var(--brand);font-size:1.05rem;}
+
+  .authors{margin:.6rem 0 .2rem;font-size:1.18rem;font-weight:500;}
+  .authors a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid transparent;}
+  .authors a:hover{border-bottom-color:var(--brand);color:var(--brand);}
+  .affil{color:var(--muted);font-size:1.02rem;margin-top:.25rem;}
+  .note{color:var(--muted);font-size:.92rem;margin-top:.5rem;}
+
+  .links{margin:1.6rem 0 .3rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;}
+  .btn-link{display:inline-flex;align-items:center;gap:.5rem;background:#111827;color:#fff;border-radius:999px;
+            padding:.55rem 1.15rem;font-weight:600;font-size:.98rem;text-decoration:none;transition:background .15s,transform .15s;}
+  .btn-link:hover{background:var(--brand);color:#fff;transform:translateY(-1px);}
+  .btn-link i{font-size:1.02rem;}
+
+  section.block-sec{max-width:900px;margin:0 auto;padding:2.4rem 1.2rem;}
+  .section-title{text-align:center;font-size:1.7rem;font-weight:700;margin-bottom:1.3rem;}
+  .lead{font-size:1.06rem;color:var(--ink);text-align:justify;}
+
+  .fig{margin:1.4rem auto;max-width:820px;}
+  .fig img{width:100%;border-radius:10px;border:1px solid var(--border);display:block;}
+  .fig figcaption{color:var(--muted);font-size:.93rem;margin-top:.6rem;text-align:center;}
+  .fig-ph{display:flex;align-items:center;justify-content:center;text-align:center;min-height:230px;
+          border:2px dashed var(--border);border-radius:10px;background:var(--soft);color:var(--muted);
+          font-size:.95rem;padding:1.5rem;}
+
+  .soft-band{background:var(--soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+  .method-point{margin:1.1rem 0;}
+  .method-point h3{font-size:1.12rem;font-weight:700;margin-bottom:.2rem;color:var(--brand-dark);}
+  .method-point p{color:var(--muted);}
+
+  .bibtex-wrap{position:relative;max-width:900px;margin:0 auto;}
+  pre.bibtex{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:1.2rem 1.1rem;overflow-x:auto;
+             font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;}
+  .copy-btn{position:absolute;top:.7rem;right:.7rem;background:var(--brand);color:#fff;border:none;border-radius:7px;
+            padding:.35rem .8rem;font-weight:600;cursor:pointer;font-size:.82rem;}
+  .copy-btn:hover{background:var(--brand-dark);}
+
+  footer.credit{padding:2.2rem 1rem;text-align:center;color:var(--muted);font-size:.9rem;}
+  footer.credit a{color:var(--brand);}
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="has-text-centered hero-head-pad">
+  <div class="container" style="max-width:960px;">
+    <h1 class="paper-title">Anyone Can Be a Doctor:<br>Debiasing VLMs via Task-Vector Negation</h1>
+    <div class="conf-badge">🎉 ICVGIP 2026</div>
+
+    <div class="authors">
+      <a href="#" target="_blank">Arkabrato Chakraborty</a>,
+      <a href="#" target="_blank">Naquee Rizwan</a>,
+      <a href="https://cse.iitkgp.ac.in/~adas/" target="_blank">Abir Das</a>,
+      <a href="https://cse.iitkgp.ac.in/~saptarshi/" target="_blank">Saptarshi Ghosh</a>
+    </div>
+    <div class="affil">Indian Institute of Technology Kharagpur</div>
+
+    <!-- LINK BUTTONS: replace the "#" hrefs with your real URLs -->
+    <nav class="links">
+      <a class="btn-link" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a class="btn-link" href="https://openreview.net/forum?id=P44gANihWT" target="_blank"><i class="fas fa-comments"></i> OpenReview</a>
+      <a class="btn-link" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+      <a class="btn-link" href="#" target="_blank"><i class="fas fa-box-archive"></i> Supplementary</a>
+      <a class="btn-link" href="#" target="_blank"><i class="fas fa-file-lines"></i> arXiv</a>
+    </nav>
+    <div class="note">Dept. of Computer Science and Engineering, IIT Kharagpur</div>
+  </div>
+</header>
+
+<!-- ===================== TEASER ===================== -->
+<section class="block-sec" style="padding-top:1rem;">
+  <figure class="fig">
+    <!-- Replace with: <img src="static/images/teaser.png" alt="Competitive four-face selection task"> -->
+    <div class="fig-ph">Teaser figure &mdash; replace this box with<br><code>&lt;img src="static/images/teaser.png"&gt;</code><br>(e.g. the 2&times;2 four-face composite + prompt &rarr; selection)</div>
+    <figcaption>Given a composite of four faces spanning gender and race, a biased VLM
+    disproportionately selects certain groups for socially sensitive words. Task-vector negation
+    moves the selections toward demographic parity.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== ABSTRACT ===================== -->
+<section class="soft-band">
+  <div class="block-sec">
+    <h2 class="section-title">Abstract</h2>
+    <p class="lead">
+      Generative Vision-Language Models (VLMs) such as LLaVA-1.5 and Qwen2.5-VL are increasingly
+      deployed in applications that reason about people, where any demographic bias they carry can
+      translate into unfair outcomes at scale. While bias in contrastive VLMs such as CLIP has been
+      studied extensively, bias in <em>generative</em> VLMs &mdash; which produce open-ended outputs
+      &mdash; remains comparatively underexplored. We study demographic bias in a competitive setting,
+      where four faces spanning gender and race compete within a single image and the model produces
+      open-ended bounding-box selections with no neutral opt-out. We quantify the resulting demographic
+      skew with a label-free fairness measure, Disparate Impact, and mitigate it through
+      <em>task-vector negation</em>: we learn lightweight LoRA adapters that predict gender and race
+      from a single face &mdash; capturing the appearance-to-attribute mapping as a task vector &mdash;
+      and negate this vector from the model's weights to induce targeted forgetting of that mapping,
+      using only standard attribute labels disjoint from evaluation. Our method reduces bias toward
+      parity and outperforms prompt-based baselines, more consistently across datasets. We further find
+      that the debiasing effect is architecture-dependent &mdash; LLaVA-1.5 rebalances its selections
+      while Qwen2.5-VL abstains &mdash; and that the effect transfers to unseen decision tasks such as
+      loan, bail, and rent approval while preserving general capability.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== METHOD ===================== -->
+<section class="block-sec">
+  <h2 class="section-title">Method</h2>
+
+  <div class="method-point">
+    <h3>Competitive evaluation task</h3>
+    <p>We build 2&times;2 composites with one face from each group &mdash; Black-Male, White-Male,
+    Black-Female, White-Female &mdash; and prompt the model to box the face(s) matching a bias-eliciting
+    word from eight social categories. Every composite contains all four groups exactly once, so uniform
+    selection (25% each) is the fairness reference and any deviation isolates demographic bias.</p>
+  </div>
+
+  <div class="method-point">
+    <h3>Disparate Impact (label-free)</h3>
+    <p>We measure bias as Disparate Impact (DI), the ratio of the least- to most-selected group's count,
+    treating DI&nbsp;&lt;&nbsp;0.8 (the "80% rule") as substantial imbalance. Abstention is scored as an
+    even vote across all four groups, so declining to judge counts as unbiased behavior.</p>
+  </div>
+
+  <div class="method-point">
+    <h3>Task-vector negation</h3>
+    <p>We fine-tune LoRA adapters on an auxiliary attribute-prediction task (gender, race, or both) in the
+    vision encoder, projector, and decoder. The adapter weights form a task vector &Delta;W, which we
+    negate from the pretrained weights, <strong>W<sub>db</sub> = W<sub>0</sub> &minus; &lambda;&Delta;W</strong>,
+    inducing targeted forgetting of the appearance-to-attribute mapping &mdash; using only standard
+    attribute labels disjoint from evaluation.</p>
+  </div>
+
+  <figure class="fig">
+    <!-- Replace with: <img src="static/images/method.png" alt="Task-vector negation overview"> -->
+    <div class="fig-ph">Method figure &mdash; replace with<br><code>&lt;img src="static/images/method.png"&gt;</code></div>
+    <figcaption>Overview: learn gender/race task vectors with LoRA, then negate them from the model's weights.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== RESULTS ===================== -->
+<section class="soft-band">
+  <div class="block-sec">
+    <h2 class="section-title">Key Results</h2>
+    <p class="lead">
+      Both LLaVA-1.5 and Qwen2.5-VL fall below the 0.8 DI threshold before debiasing, confirming
+      systematic demographic disparity (e.g., a strong Black-Male association for the "criminal" category).
+      Task-vector negation moves selections toward parity and outperforms the ModSCAN prompt-prefix
+      baselines more consistently across datasets. The mechanism is architecture-dependent: LLaVA-1.5
+      <em>rebalances</em> by spreading selections across groups, while Qwen2.5-VL exhibits principled
+      <em>refusal</em>, declining appearance-based social inference while still passing neutral detection.
+      The effect transfers to unseen loan/bail/rent decisions, and MME checks confirm general capability is
+      preserved.
+    </p>
+    <figure class="fig">
+      <!-- Replace with: <img src="static/images/heatmap.png" alt="Selection-share heatmaps before/after negation"> -->
+      <div class="fig-ph">Results figure &mdash; replace with<br><code>&lt;img src="static/images/heatmap.png"&gt;</code><br>(e.g. per-group selection heatmaps before/after negation)</div>
+      <figcaption>Per-category selection share for LLaVA-1.5 before (left) and after (right) negating the
+      race task vector; distributions flatten toward 25% parity.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== BIBTEX ===================== -->
+<section class="block-sec">
+  <h2 class="section-title">BibTeX</h2>
+  <div class="bibtex-wrap">
+    <button class="copy-btn" id="copyBtn">Copy</button>
+<pre class="bibtex" id="bib">@inproceedings{chakraborty2026anyone,
+  title     = {Anyone Can Be a Doctor: Debiasing VLMs via Task-Vector Negation},
+  author    = {Chakraborty, Arkabrato and Rizwan, Naquee and Das, Abir and Ghosh, Saptarshi},
+  booktitle = {Proceedings of the 17th Indian Conference on Computer Vision,
+               Graphics and Image Processing (ICVGIP)},
+  year      = {2026},
+  publisher = {ACM},
+  doi       = {10.1145/nnnnnnn.nnnnnnn}
+}</pre>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="credit">
+  <p>
+    This page uses the
+    <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
+    adapted from the <a href="https://nerfies.github.io/" target="_blank">Nerfies</a> project page.<br>
+    Content licensed under
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>. Please link back if you reuse it.
+  </p>
+</footer>
+
+<script>
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var t = document.getElementById('bib').innerText;
+    navigator.clipboard.writeText(t).then(function(){
+      var b = document.getElementById('copyBtn');
+      b.textContent = 'Copied!';
+      setTimeout(function(){ b.textContent = 'Copy'; }, 1600);
+    });
+  });
+</script>
+</body>
+</html>
