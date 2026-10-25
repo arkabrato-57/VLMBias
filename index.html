@@ -171,7 +171,10 @@ to high-stake downstream tasks, such as loan, bail and rent approval decisions
 
   <figure class="fig">
     <img src="method.png" alt="Task-vector negation overview"> -->
-    <div class="fig-ph">Method figure &mdash; replace with<br><code>&lt;img src="static/images/method.png"&gt;</code></div>
+     Brief overview of the proposed workflow. (A) Training pipeline on the auxiliary attribute-prediction task, where
+LoRA adapters are added to the vision encoder, projection, and language model of a generative VLM to learn the task vector.
+(B) Inference on the debiased model — obtained by negating the learned task vector — using a 2×2 composite image, where the
+model is prompted to return bounding-box coordinates for the selected face(s)
     <figcaption>Overview: learn gender/race task vectors with LoRA, then negate them from the model's weights.</figcaption>
   </figure>
 </section>
@@ -190,12 +193,7 @@ to high-stake downstream tasks, such as loan, bail and rent approval decisions
       The effect transfers to unseen loan/bail/rent decisions, and MME checks confirm general capability is
       preserved.
     </p>
-    <figure class="fig">
-      <!-- Replace with: <img src="static/images/heatmap.png" alt="Selection-share heatmaps before/after negation"> -->
-      <div class="fig-ph">Results figure &mdash; replace with<br><code>&lt;img src="static/images/heatmap.png"&gt;</code><br>(e.g. per-group selection heatmaps before/after negation)</div>
-      <figcaption>Per-category selection share for LLaVA-1.5 before (left) and after (right) negating the
-      race task vector; distributions flatten toward 25% parity.</figcaption>
-    </figure>
+    
   </div>
 </section>
 
